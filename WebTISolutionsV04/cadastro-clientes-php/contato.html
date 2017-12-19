@@ -1,0 +1,181 @@
+﻿<!DOCTYPE HTML>
+<html lang="pt-BR">
+
+<head>
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fale Conosco</title>
+<meta name="description" content="">            
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
+    <link href="css/layout_seq.css" rel="stylesheet" />
+    <link href="css/mobile_seq.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav>
+        <div>
+            <img src="img/download.png" />
+            <a href="home.html">Home</a><a href="empresa.html">A Empresa</a>
+            <a href="servicos.html">Serviços</a><a href="noticias.html">Notícias</a><a href="contato.html">Fale Conosco</a>
+            <a href="login.php" style="margin-right:0px;"><img style="height:40px; margin-top: 0;"  src="img/area-restrita-2.png"></a>
+        </div>
+    </nav>
+    <header>
+        <h1>Fale Conosco</h1>
+    </header>
+
+    <article>   
+    <h1>Localização</h1>
+                <div id="mapa" style="width:100%; height:400px;"></div>                
+    </article>
+
+    <article>
+        <h1>Formulário de Contato</h1>
+        <hr>
+
+        <p><strong>Rua Augusta, 10 - andar 12</strong><br/>
+        São Paulo - SP<br/>
+        CEP: 05535-241</p>
+
+        <p>Contato: <strong>(11) 3748-8912</strong> ou <strong>(11) 97485-4123</strong><br/>
+        Email: faleconosco@hotmail.com</p>
+
+        <p>Horário de Atendimento: De segunda à sexta-feira das 9 às 18hs</p>
+
+        <hr>
+
+        <section>
+
+            <form id="myForm" name="myForm" method="POST">
+
+            <div id="erroName">*campo obrigatório não preenchido</div>
+                <label id="label" for="name">Nome Completo:<small>*obrigatório</small></label><br/>
+                <input type="text" name="name" id="name" required><br/>
+
+            <div id="erroEmail">*campo obrigatório não preenchido</div>      
+                <label id="label" for="email">Seu email:<small>*obrigatório</small></label><br/>
+                <input type="text" name="email" id="email" required><br/>
+
+            <div id="erroTelefone">*campo obrigatório não preenchido</div>   
+                <label id="label" for="telefone">Telefone:<small>*obrigatório</small></label><br/>
+                <input type="text" name="telefone" id="telefone" required><br/>
+
+            <div id="erroAssunto">*campo obrigatório não preenchido</div>    
+                <label id="label" for="assunto">Assunto:<small>*obrigatório</small></label><br/>
+                <input type="text" name="assunto" id="assunto" required><br/>
+
+            <div id="erroMensagem">*campo obrigatório não preenchido</div>
+                <label id="label" for="mensagem">Mensagem:<small>*obrigatório</small></label><br/>
+                <textarea name="mensagem" id="mesagem" rows="4" cols="50" required></textarea><br><br /><br/>
+
+
+                <img width="300px" src="img/botton_send.png" alt="envio do formulario" onclick="agradece(); verifica()" style="cursor: pointer;">
+            </form>
+
+        <div id="agradece"></div>
+        <div id="alerta"></div>
+
+        </section>
+       
+    </article>
+
+    <div align="center" id="hr"><hr></div>
+
+    <footer>
+        <div id="footer" align="center">
+            <h3>Empresa de Soluções<br /> Tecnológicas<br /></h3>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="js/geolocation.js" type="text/javascript"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGGtvrWUZkeiZEK-syYFZIFKpFxt-uQM8&callback=myPositionCallBackFunction"
+            async defer></script>
+
+
+
+      <script>   
+
+      var txtName = document.getElementById("name");
+      var txtEmail = document.getElementById("email");
+      var txtTelefone = document.getElementById("telefone");
+      var txtAssunto = document.getElementById("assunto");
+      var txtMensagem = document.getElementById("mesagem");
+
+       var divAgradece =  document.getElementById("agradece");
+       var divAlerta = document.getElementById("alerta");
+       var frm = document.getElementById("myForm");
+
+       var divErroName = document.getElementById("erroName");
+       var divErroEmail = document.getElementById("erroEmail");
+       var divErroTelefone = document.getElementById("erroTelefone");
+       var divErroAssunto = document.getElementById("erroAssunto");
+       var divErroMensagem = document.getElementById("erroMensagem");
+
+
+function agradece(){
+
+   if (txtName.value != '' && txtEmail.value != '' && txtTelefone.value != '' && txtAssunto.value != '' && txtMensagem.value != '') 
+
+    {
+
+ var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    divAlerta.style.visibility = "hidden";
+                    divAgradece.innerHTML = this.responseText;
+                    divAgradece.style.visibility = 'visible';
+                    frm.reset();
+                }
+            }
+            xmlhttp.open("POST", "contato.php", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("name="+ txtName.value +
+                         "&email=" + txtEmail.value + 
+                         "&telefone="+ txtTelefone.value +
+                         "&assunto="+ txtAssunto.value +
+                         "&mensagem="+ txtMensagem.value);
+
+    }     else { alert("Um ou mais campos não foram preenchidos!!\nFavor verificar e tentar novamente")}       
+
+    
+};
+
+function verifica(){     
+
+    divErroName.style.visibility="hidden";
+    divErroEmail.style.visibility="hidden";
+    divErroTelefone.style.visibility="hidden";
+    divErroAssunto.style.visibility="hidden";
+    divErroMensagem.style.visibility="hidden"; 
+
+    if (txtName.checkValidity() == false) {
+        divErroName.style.visibility= "visible";
+    }
+
+    if (txtEmail.checkValidity() == false) {
+       divErroEmail.style.visibility= "visible";
+    }
+
+    if (txtTelefone.checkValidity() == false) {
+    divErroTelefone.style.visibility= "visible";
+    }
+
+    if (txtAssunto.checkValidity() == false) {
+    divErroAssunto.style.visibility= "visible";
+    }
+
+    if (txtMensagem.checkValidity() == false) {
+    divErroMensagem.style.visibility= "visible";
+    }
+}
+   
+      </script>      
+    
+</body>
+</html>

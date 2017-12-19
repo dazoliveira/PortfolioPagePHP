@@ -1,0 +1,6 @@
+//Credenciais para conexão com banco MySql
+
+db: db_solucoes_ti
+server: localhost
+usuario: root
+senha: 

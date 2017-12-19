@@ -1,0 +1,134 @@
+﻿
+@media (max-width: 780px) {
+    
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans|Fjalla+One');
+
+    html {
+        margin: 0;
+        padding: 0;
+        height: auto;
+    }
+
+    body {
+        font-family: 'Encode Sans', sans-serif;
+        background: white;
+        background-repeat: no-repeat;
+        margin: 0px;
+        padding: 0px;
+        color:black;
+    }
+
+   
+
+    #header {
+        display: flex;
+        display: -ms-flexbox;
+        background-image: url('../img/ti1.jpg');
+        width: 100%;
+        margin: 0 10px auto 0;
+    }
+
+    header > h1 {
+        color:white;
+        margin: 40px auto auto 5px;
+        font-size: 16px;
+    }
+
+    header img {
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    nav {
+        margin: 0 0 0 0;
+        width: 100%;
+        background-color: #6979d8;
+        height: 55px;
+        color: white;
+        box-shadow:3px 5px  10px #b1abab ;
+    }
+
+    #nav {
+        margin: 20px auto auto 20px;
+    }
+
+        #nav a {
+            display: inline;
+            color: white;
+            padding: 20px;
+        }
+
+            #nav a:hover {
+                color: #76bceb;
+            }
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        a:hover {
+            color: #ff0000;
+        }
+
+    article {
+        height: auto;
+        display: flex;
+        display: -ms-flexbox;
+        flex-direction: column;
+    }
+
+
+
+    #servicos_flex {
+        display: flex;
+        display: -ms-flexbox;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        height: auto;
+        margin: 6% 2% 2% auto;
+        border-radius: 50px;
+        text-align: center;
+        padding: 2px;
+    }
+
+        #servicos_flex h3 {
+            color: black;
+            margin-top: 15px;
+        }
+
+        #servicos_flex > a > img {
+            width: 320px;
+            margin-top: 15px;
+            height: auto;
+        }
+
+
+    hr {
+        width: 95%;
+        margin: 5px;
+    }
+
+
+    footer {
+        bottom: 0; /* Position the navbar at the top of the page */
+        margin: 0px;
+        width: 100%;
+    }
+
+    #footer {
+        justify-content: center;
+        width: 100%;
+    }
+
+    div#footer h2 {
+        font-family: 'Fjalla One', sans-serif;
+        text-shadow: 2px 2px 5px white;
+    }
+
+    small{
+       font-size:12px;
+    }
+}

@@ -1,0 +1,30 @@
+//SQL de funcionarios da empresa para a realização da autenticação na area restrita do site
+
+CREATE TABLE `usuariosTi` (
+`id` int(11) NOT NULL,
+`usuario` varchar(50) NOT NULL,
+`senha` varchar(50) NOT NULL,
+`nome` varchar(100),
+`ativo` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `usuarios`
+(`id`, `usuario`, `senha`, `nome`, `ativo`) VALUES
+(1, 'jose', 'secreto@123', 'José', 1),
+(2, 'maria', 'fam', 'Maria', 1),
+(3, 'marco', 'marco@123', 'Marco Antônio', 1),
+(4, 'josec', 'xyz@123', 'José Carlos', 0),
+(5, 'joao', 'joao111', 'João Roberto', 0);
+ALTER TABLE `usuarios` ADD PRIMARY KEY (`id`);
+ALTER TABLE `usuarios` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `usuarios` ADD UNIQUE( `usuario`);
+
+=======================================================================
+
+TRUNCATE TABLE `usuariosTi`;
+INSERT INTO `usuarios`
+(`id`, `usuario`, `senha`, `nome`, `ativo`) VALUES
+(1, 'jose', md5('secreto@123'), 'José', 1),
+(2, 'maria', md5('fam'), 'Maria', 1),
+(3, 'marco', md5('marco@123'), 'Marco Antônio', 1),
+(4, 'josec', md5('xyz@123'), 'José Carlos', 0),
+(5, 'joao', md5('joao111'), 'João Roberto', 0);

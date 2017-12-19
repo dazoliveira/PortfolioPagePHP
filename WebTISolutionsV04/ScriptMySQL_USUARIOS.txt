@@ -1,0 +1,29 @@
+//SQL para inserção de dados feito pelo cliente na aba fale conosco no site da empresa
+
+
+CREATE TABLE `usuarios` (
+
+`id` int(11) NOT NULL,
+
+`nome` varchar(100) NOT NULL,
+
+`email` varchar(100) NOT NULL,
+
+`telefone` varchar(20) NOT NULL,
+
+assunto varchar(100) NOT null,
+
+comentario varchar(500) not null)
+
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `telefone`, assunto, comentario) VALUES
+		       (1, 'José', 'jose@hotmail.com', '1111-1111', 'orçamento', 'Ola, voçês trabalham com quais plataformas?'),
+
+		       (2, 'Maria', 'maria@hotmail.com', '2222-2222', 'manutenção', 'Voçês disponilbilizam um técnico 24hs por dia?');
+
+
+ALTER TABLE `usuarios` ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `usuarios` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
